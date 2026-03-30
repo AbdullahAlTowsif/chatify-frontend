@@ -1,12 +1,29 @@
-function App() {
-  return (
-    <div>
-      <h1 class="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-      <button className="btn btn-success">Success</button>
-    </div>
-  )
-}
+import { createBrowserRouter } from "react-router";
+import ChatPage from "./pages/ChatPage";
+import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
+import { Common } from "./Common";
+import ProtectedRoute from "./RouteCheck/ProtectedRoute";
+import PublicRoute from "./RouteCheck/PublicRoute";
 
-export default App;
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Common />,
+    children: [
+      {
+        index: true,
+        element: <ProtectedRoute> <ChatPage /> </ProtectedRoute>
+      },
+      {
+        path: "login",
+        element: <PublicRoute> <LoginPage /> </PublicRoute>
+      },
+      {
+        path: "signup",
+        element: <PublicRoute> <SignUpPage /> </PublicRoute>
+      }
+    ]
+
+  }
+]);
