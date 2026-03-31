@@ -3,8 +3,8 @@ import ChatPage from "./pages/ChatPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import { Common } from "./Common";
-import ProtectedRoute from "./RouteCheck/ProtectedRoute";
 import PublicRoute from "./RouteCheck/PublicRoute";
+import ProtectedRoute from "./RouteCheck/ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +13,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        // element: <ChatPage />
         element: <ProtectedRoute> <ChatPage /> </ProtectedRoute>
       },
       {
