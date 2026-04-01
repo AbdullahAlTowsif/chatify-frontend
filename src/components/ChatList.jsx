@@ -7,6 +7,7 @@ import NoChatsFound from "./NoChatsFound";
 function ChatsList() {
     const { getMyChatPartners, chats, isUsersLoading, setSelectedUser } = useChatStore();
     const { onlineUsers } = useAuthStore();
+    // console.log("chats", chats);
 
     useEffect(() => {
         getMyChatPartners();
@@ -24,7 +25,7 @@ function ChatsList() {
                     onClick={() => setSelectedUser(chat)}
                 >
                     <div className="flex items-center gap-3">
-                        <div className={`avatar ${onlineUsers?.includes(chat._id) ? "online" : "offline"}`}>
+                        <div className={`avatar ${onlineUsers?.includes(chat._id) ? "avatar-online" : "avatar-offline"}`}>
                             <div className="size-12 rounded-full">
                                 <img src={chat?.profilePic || "/avatar.png"} alt={chat?.fullName} />
                             </div>
